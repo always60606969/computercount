@@ -14,6 +14,11 @@
     var getDataTable ="{{url('/getDataTable')}}";
           $(document).ready(function() {
             $('#user_table').DataTable( {
+            //  dom: 'Blfrtip',  // lBfrtip Bfrtip Blfrtip
+             lengthMenu: [
+                     [ 5, 10, 25, 50, 100, -1 ],
+                     [ '5','10', '25', '50', '100', 'Show all' ]
+                 ],
                  "language": {
                      "lengthMenu": "_MENU_ мөрөөр харах",
                      "zeroRecords": "Хайлт илэрцгүй байна",
@@ -56,10 +61,22 @@
                        { data: "device_mdate", name: "device_mdate"},
                        { data: "device_udate", name: "device_udate"}
                        ]
+
+
+
                   });
                });
 
+
    </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+ //Initialize your table
+ var table = $('#user_table').dataTable();
+ //Get the total rows
+ alert(table.fnSettings().fnRecordsTotal());
+});
+</script>
 {{-- // Баганаас утга авах --}}
 <script type="text/javascript">
 var child_tables_row = "";
@@ -146,6 +163,11 @@ $(document).ready(function(){
 function Refresh(){
   $('#user_table').dataTable().fnDestroy();
   $('#user_table').DataTable( {
+    dom: 'Blfrtip',  // lBfrtip Bfrtip Blfrtip
+   lengthMenu: [
+           [ 5, 10, 25, 50, 100, -1 ],
+           [ '5','10', '25', '50', '100', 'Show all' ]
+       ],
        "language": {
            "lengthMenu": "_MENU_ мөрөөр харах",
            "zeroRecords": "Хайлт илэрцгүй байна",
@@ -201,11 +223,11 @@ function Refresh(){
     </div>
   @endif
   <div class="col-lg-12">
-
       <div class="table-responsive p-3">
         <table class="table" id="user_table">
           <thead class="thead-light">
             <tr>
+              <th></th>
               <th></th>
               <th>Техник хэрэгсэл нэр</th>
               <th>CPU /GB/</th>
@@ -232,8 +254,6 @@ function Refresh(){
           </thead>
           <tfoot>
             <tr>
-
-
             </tr>
           </tfoot>
           <tbody>
@@ -242,9 +262,13 @@ function Refresh(){
 
     </div>
     <div class="clear-fix"></div>
+    <div class="row text-center" >
       <button type="button" name="button" class="btn btn-warning" id="btnEditComputerTb">EDIT</button>
       <button type="button" name="buttonDelete" class="btn btn-primary" id="btnDeleteComputerTb">Delete</button>
+    </div>
+
   </div>
+
   <script type="text/javascript">
     $(document).ready(function(){
 
@@ -267,6 +291,7 @@ function Refresh(){
       <script src="{{url('public/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
       <script src="{{url('public/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
-      @include("parts.update");
-      @include("parts.add");
+      @include("parts.update")
+      @include("parts.add")
+
 @endsection

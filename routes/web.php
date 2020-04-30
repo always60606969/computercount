@@ -21,5 +21,5 @@ Route::get('/computercount/add','countController@addcomputer');
 Route::post('/computercount/store','addController@store');
 Route::post('/computercount/update', 'addController@update');
 Route::post('/computercount/delete', 'addController@delete');
-
 Route::get('/getDataTable','addController@getDataTable');
+Route::get('/getDataTable2','addController@getDataTable2');

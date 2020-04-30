@@ -243,7 +243,52 @@
 														  @yield('content')
           								</div>
 										</div><!-- /.widget-box -->
+										<div class="clear-fix"></div>
+										<br>
+
 								</div><!-- /.row -->
+								<div class="col-sm-12">
+									<div class="row">
+										<div class="col-sm-6">
+											<table class="table" id="">
+												<thead class="thead-light">
+													<tr>
+														<th></th>
+														<th>Техник хэрэгсэл нэр</th>
+														<th>CPU /GB/</th>
+														<th>RAM /GB/</th>
+														<th>RAM /GB/</th>
+												</tr>
+								
+												</thead>
+												<tbody>
+													<tr>
+
+													</tr>
+												</tbody>
+										</table>
+										</div>
+										<div class="col-sm-6" >
+											<table class="table" id="">
+												<thead class="thead-light">
+														<tr>
+															<th></th>
+															<th>Техник хэрэгсэл нэр</th>
+															<th>CPU /GB/</th>
+															<th>RAM /GB/</th>
+														</tr>
+
+												</thead>
+												<tfoot>
+													<tr>
+													</tr>
+												</tfoot>
+												<tbody>
+												</tbody>
+										</table>
+										</div>
+									</div>
+									</div>
 							</div><!-- /.row -->
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
@@ -255,8 +300,8 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
+							<span class="blue bolder">Зэвсэгт Хүчний Програм Хангамжийн Төв</span>
+							 &copy; 2020
 						</span>
 
 						&nbsp; &nbsp;

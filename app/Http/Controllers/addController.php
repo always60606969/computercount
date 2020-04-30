@@ -81,4 +81,11 @@ public function getDataTable()
     return DataTables::of($computers)
       ->make(true);
   }
+  public function getDataTable2()
+    {
+      $programms = DB::table('td_programms')->get();
+       return DataTables::of($programms)->make(true);
+       return $programms;
+    }
+
 }
