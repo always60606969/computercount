@@ -81,11 +81,15 @@ public function getDataTable()
     return DataTables::of($computers)
       ->make(true);
   }
-  public function getDataTable2()
+  public function getDataTable2(Request $req)
     {
-      $programms = DB::table('td_programms')->get();
+      $programms =DB::table('td_programms')
+          ->where("comID", "=", $req->id)
+          ->get();
        return DataTables::of($programms)->make(true);
-       return $programms;
+
+      // return "irlee ".$req->id;
+
     }
 
 }

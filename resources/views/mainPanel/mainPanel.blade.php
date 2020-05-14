@@ -3,7 +3,7 @@
 <head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Ace Admin</title>
+		<title>Бүртгэлийн програм</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -187,7 +187,6 @@
 				<script type="text/javascript">
 					$(document).ready(function(){
 						$('#mainMenu').click(function(){
-
 						})
 					})
 				</script>
@@ -223,9 +222,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
+								<a href="#">Үндсэн</a>
 							</li>
-							<li class="active">Dashboard</li>
+							<li class="active">Таблиц</li>
 						</ul><!-- /.breadcrumb -->
 						<div class="nav-search" id="nav-search">
 							<form class="form-search">
@@ -247,48 +246,7 @@
 										<br>
 
 								</div><!-- /.row -->
-								<div class="col-sm-12">
-									<div class="row">
-										<div class="col-sm-6">
-											<table class="table" id="">
-												<thead class="thead-light">
-													<tr>
-														<th></th>
-														<th>Техник хэрэгсэл нэр</th>
-														<th>CPU /GB/</th>
-														<th>RAM /GB/</th>
-														<th>RAM /GB/</th>
-												</tr>
-								
-												</thead>
-												<tbody>
-													<tr>
 
-													</tr>
-												</tbody>
-										</table>
-										</div>
-										<div class="col-sm-6" >
-											<table class="table" id="">
-												<thead class="thead-light">
-														<tr>
-															<th></th>
-															<th>Техник хэрэгсэл нэр</th>
-															<th>CPU /GB/</th>
-															<th>RAM /GB/</th>
-														</tr>
-
-												</thead>
-												<tfoot>
-													<tr>
-													</tr>
-												</tfoot>
-												<tbody>
-												</tbody>
-										</table>
-										</div>
-									</div>
-									</div>
 							</div><!-- /.row -->
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->

@@ -61,24 +61,14 @@
                        { data: "device_mdate", name: "device_mdate"},
                        { data: "device_udate", name: "device_udate"}
                        ]
-
-
-
                   });
                });
-
-
    </script>
-<script type="text/javascript">
-  $(document).ready(function() {
- //Initialize your table
- var table = $('#user_table').dataTable();
- //Get the total rows
- alert(table.fnSettings().fnRecordsTotal());
-});
-</script>
+
+
 {{-- // Баганаас утга авах --}}
 <script type="text/javascript">
+var getDataTable2 ="{{url('/getDataTable2')}}";
 var child_tables_row = "";
 var csrf = "{{ csrf_token() }}";
 var deleteComputerID = "{{url("/computercount/delete")}}";
@@ -91,12 +81,12 @@ $(document).ready(function(){
               $('#user_table tbody tr').css("color", "black");
               $(this).closest('tr').css("color", "white");
               $(this).closest('tr').css("background-color", "#337ab7");
-
               child_tables_row = $('#user_table').DataTable().row(currow).data();
        // Баганаас утга авах
               // alert(child_tables_row["id"]);
-          });
+              getChildTable(child_tables_row['id']);
 
+          });
           $("#btnEditComputerTb").click(function(){
             if(child_tables_row == ""){
               alert("Select row")
@@ -126,7 +116,7 @@ $(document).ready(function(){
                                                       $("#device_udate").val(child_tables_row["device_udate"]);
             $("#updateexampleModalScrollable").modal("show");
           });
-
+// Delete Function
           $("#btnDeleteComputerTb").click(function(){
               if(child_tables_row == ""){
                   alertify.alert('Та Устгах мөрөө дарж сонгоно уу!!!');
@@ -159,6 +149,47 @@ $(document).ready(function(){
               });
           });
 });
+
+function getChildTable(id_){
+  // alert(id_);
+    $('#user_table2').dataTable().fnDestroy();
+    $('#user_table2').DataTable( {
+      dom: 'rt',  // lBfrtip Bfrtip Blfrtip
+     lengthMenu: [
+             [ 5, 10, 25, 50, 100, -1 ],
+             [ '5','10', '25', '50', '100', 'Show all' ]
+         ],
+         "language": {
+             "lengthMenu": "_MENU_ мөрөөр харах",
+             "zeroRecords": "Хайлт илэрцгүй байна",
+             "info": "Нийт _PAGES_ -аас _PAGE_-р хуудас харж байна ",
+             "infoEmpty": "Хайлт илэрцгүй",
+             "infoFiltered": "(_MAX_ мөрөөс хайлт хийлээ)",
+             "sSearch": "Хайх: ",
+             "paginate": {
+               "previous": "Өмнөх",
+               "next": "Дараахи"
+             }
+         },
+           "processing": true,
+           "serverSide": true,
+           "ajax":{
+                    "url": getDataTable2,
+                    "type": "get",
+                    "data":{
+                      _token: csrf,
+                      id: id_
+                    }
+                  },
+             "columns": [
+               { data: "id", name: "id" },
+               { data: "i_date", name: "i_date"},
+               { data: "i_programms", name: "i_programms"},
+
+               ]
+          }).ajax.reload();
+
+}
 // refresh хийх function
 function Refresh(){
   $('#user_table').dataTable().fnDestroy();
@@ -216,7 +247,7 @@ function Refresh(){
 // refresh хийх function
 
 </script>
-  <!-- Datatables -->
+  Datatables
   @if (isset($msg))
     <div class="alert alert-success">
       <strong>{{$msg}}</strong>
@@ -263,15 +294,40 @@ function Refresh(){
     </div>
     <div class="clear-fix"></div>
     <div class="row text-center" >
-      <button type="button" name="button" class="btn btn-warning" id="btnEditComputerTb">EDIT</button>
-      <button type="button" name="buttonDelete" class="btn btn-primary" id="btnDeleteComputerTb">Delete</button>
+      <button type="button" name="button" class="btn btn-warning" id="btnEditComputerTb">Засах</button>
+      <button type="button" name="buttonDelete" class="btn btn-primary" id="btnDeleteComputerTb">Устгах</button>
     </div>
-
   </div>
-
-  <script type="text/javascript">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-6">
+        <table class="table" id="user_table2">
+          <thead class="thead-light">
+          <tr>
+            <th>Д/д</th>
+            <th>Суулгасан огноо</th>
+            <th>Программын нэр</th>
+          </tr>
+          </thead>
+      </table>
+        </div>
+      <div class="col-lg-6" >
+        <table class="table" id="">
+          <thead class="thead-light">
+            <tr>
+              <th>д/д</th>
+              <th>Хүлээн авсан огноо</th>
+              <th>Шалтгаан</th>
+              <th>Хүлээн авсан</th>
+              <th>Хүлээн авсан огноо</th>
+          </tr>
+          </thead>
+      </table>
+      </div>
+    </div>
+    </div>
+   <script type="text/javascript">
     $(document).ready(function(){
-
     })
   </script>
   <!-- Datatables -->
@@ -290,7 +346,6 @@ function Refresh(){
       <script src="{{url('public/vendors/jszip/dist/jszip.min.js')}}"></script>
       <script src="{{url('public/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
       <script src="{{url('public/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-
       @include("parts.update")
       @include("parts.add")
 
