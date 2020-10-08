@@ -1,0 +1,25 @@
+
+.centerLogin{
+padding-top: 50px;
+}
+.main{
+  background-image: url('../images/it2.jpg');
+background-size: 100%;
+}
+.header2{
+  /* background-color: blue; */
+  /* opacity: 0.3; */
+  text-align: center;
+}
+.centerLogin2{
+padding-top: 50px;
+}
+.DatatableS{
+  height: 500px;
+  width: 500px;
+  background-color: green;
+}
+.admin{
+  background-image: url('../images/it3.jpeg');
+  background-size: 100%;
+}

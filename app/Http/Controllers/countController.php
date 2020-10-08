@@ -15,4 +15,12 @@ class countcontroller extends Controller
     {
       return view('parts.add');
     }
+    public function logout()
+    {
+      return view('computer.logoutBlade');
+    }
+    public function users()
+    {
+      return view('parts.admin');
+    }
 }

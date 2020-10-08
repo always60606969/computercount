@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{{-- LogOut --}}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
+	<title>{{ config('app.name', 'Laravel') }}</title>
+
+	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}" defer></script>
+
+	<!-- Fonts -->
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<!-- Styles -->
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	{{-- LogOut --}}
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Бүртгэлийн програм</title>
-
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 {{-- Ehend oruulah --}}
@@ -13,45 +31,19 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="{{url("public/assets/css/bootstrap.min.css")}}" />
 		<link rel="stylesheet" href="{{url("public/assets/font-awesome/4.5.0/css/font-awesome.min.css")}}" />
-
 		<!-- page specific plugin styles -->
-
 		<!-- text fonts -->
 		<link rel="stylesheet" href="{{url("public/assets/css/fonts.googleapis.com.css")}}" />
-
 		<!-- ace styles -->
 		<link rel="stylesheet" href="{{url("public/assets/css/ace.min.css")}}" class="ace-main-stylesheet" id="main-ace-style" />
-
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-		<![endif]-->
 		<link rel="stylesheet" href="{{url("public/assets/css/ace-skins.min.css")}}" />
 		<link rel="stylesheet" href="{{url("public/assets/css/ace-rtl.min.css")}}" />
-
-		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-		<![endif]-->
-
-		<!-- inline styles related to this page -->
-
-		<!-- ace settings handler -->
 		<script src="{{ asset('public/z-alert/js/alertify.min.js') }}"></script>
 		<script src="{{url("public/assets/js/ace-extra.min.js")}}"></script>
 		<!--Zagvarlag alert-->
     <link rel="stylesheet" href="{{ asset('public/z-alert/css/alertify.core.css') }}" />
   	<link rel="stylesheet" href="{{ asset('public/z-alert/css/alertify.default.css') }}" />
-
-    <!--Zagvarlag alert-->
-
-		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-		<!--[if lte IE 8]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
-
 	</head>
-
 	<body class="no-skin">
 		<div id="navbar" class="navbar navbar-default  ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
@@ -93,7 +85,6 @@
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
 								<span class="badge badge-important"></span>
 							</a>
-
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-footer">
 								</li>
@@ -104,20 +95,15 @@
 								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
 								<span class="badge badge-success"></span>
 							</a>
-
 						</li>
-
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="{{url("public/computercount/images/avatars/user.jpg")}}" alt="" />
 								<span class="user-info">
 									<small>Welcome</small>
-
 								</span>
-
 								<i class="ace-icon fa fa-caret-down"></i>
 							</a>
-
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
 									<a href="#">
@@ -125,21 +111,22 @@
 										Settings
 									</a>
 								</li>
-
 								<li>
 									<a href="profile.html">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>
 								</li>
-
 								<li class="divider"></li>
-
 								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-power-off"></i>
-										Logout
-									</a>
+									{{-- Logout --}}
+									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+	                     {{ __('Logout') }}
+	                  </a>
+	             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                     @csrf
+	             </form>
+                      {{-- Logout --}}
 								</li>
 							</ul>
 						</li>
@@ -147,6 +134,7 @@
 				</div>
 			</div><!-- /.navbar-container -->
 		</div>
+
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
@@ -157,35 +145,26 @@
 				</script>
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success" data-toggle="modal" data-target="#exampleModalScrollable" >
-							<i class="ace-icon glyphicon-plus "></i>
+						<button class="btn btn-success" data-toggle="modal" data-target="#exampleModalScrollable">
+							<i class="ace-icon glyphicon-plus"></i>
 						</button>
-
-						<button class="btn btn-info">
+						<button class="btn btn-info" id="btnEditComputerTb">
 							<i class="ace-icon fa fa-pencil"></i>
 						</button>
-
-						<button class="btn btn-warning">
-							<i class="ace-icon fa fa-users"></i>
-						</button>
-
-						<button class="btn btn-danger">
-							<i class="ace-icon fa fa-cogs"></i>
+						<button class="btn btn-danger" id="btnDeleteComputerTb">
+							<i class="ace-icon fa fa-trash-o"></i>
 						</button>
 					</div>
-
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
 						<span class="btn btn-success"></span>
-
 						<span class="btn btn-info"></span>
-
 						<span class="btn btn-warning"></span>
-
 						<span class="btn btn-danger"></span>
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
 				<script type="text/javascript">
 					$(document).ready(function(){
+
 						$('#mainMenu').click(function(){
 						})
 					})
@@ -199,6 +178,13 @@
 						</a>
 						<b class="arrow"></b>
 					</li>
+					<li class="active">
+						<a href="{{url('computercount/users/')}}">
+							<i class="menu-icon fa  fa-users"></i>
+							<span class="menu-text" id="mainMenu"> Хэрэглэгч нэмэх</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
 					<li class="">
 						<a href="calendar.html">
 							<i class="menu-icon fa fa-calendar"></i>
@@ -206,7 +192,7 @@
 								Calendar
 							<span class="badge badge-transparent tooltip-error" title="2 Important Events">
 									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
+							</span>
 							</span>
 						</a>
 						<b class="arrow"></b>
@@ -226,6 +212,7 @@
 							</li>
 							<li class="active">Таблиц</li>
 						</ul><!-- /.breadcrumb -->
+
 						<div class="nav-search" id="nav-search">
 							<form class="form-search">
 								<span class="input-icon">
@@ -244,9 +231,7 @@
 										</div><!-- /.widget-box -->
 										<div class="clear-fix"></div>
 										<br>
-
 								</div><!-- /.row -->
-
 							</div><!-- /.row -->
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
@@ -261,17 +246,14 @@
 							<span class="blue bolder">Зэвсэгт Хүчний Програм Хангамжийн Төв</span>
 							 &copy; 2020
 						</span>
-
 						&nbsp; &nbsp;
 						<span class="action-buttons">
 							<a href="#">
 								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
 							</a>
-
 							<a href="#">
 								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
 							</a>
-
 							<a href="#">
 								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
 							</a>
@@ -283,26 +265,12 @@
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
-    <!-- basic scripts -->
 
-    		<!--[if !IE]> -->
-
-
-    		<!-- <![endif]-->
-
-    		<!--[if IE]>
-    <script src="assets/js/jquery-1.11.3.min.js"></script>
-    <![endif]-->
     		<script type="text/javascript">
     			if('ontouchstart' in document.documentElement) document.write("<script src='{{url("public/assets/js/jquery.mobile.custom.min.js")}}'>"+"<"+"/script>");
     		</script>
+				<script src="{{ asset('js/app.js') }}" defer></script>
     		<script src="{{url("public/assets/js/bootstrap.min.js")}}"></script>
-
-    		<!-- page specific plugin scripts -->
-
-    		<!--[if lte IE 8]>
-    		  <script src="assets/js/excanvas.min.js"></script>
-    		<![endif]-->
     		<script src="{{url("public/assets/js/jquery-ui.custom.min.js")}}"></script>
     		<script src="{{url("public/assets/js/jquery.ui.touch-punch.min.js")}}"></script>
     		<script src="{{url("public/assets/js/jquery.easypiechart.min.js")}}"></script>
@@ -310,11 +278,7 @@
     		<script src="{{url("public/assets/js/jquery.flot.min.js")}}"></script>
     		<script src="{{url("public/assets/js/jquery.flot.pie.min.js")}}"></script>
     		<script src="{{url("public/assets/js/jquery.flot.resize.min.js")}}"></script>
-
-    		<!-- ace scripts -->
     		<script src="{{url("public/assets/js/ace-elements.min.js")}}"></script>
     		<script src="{{url("public/assets/js/ace.min.js")}}"></script>
-
-
 	</body>
 </html>

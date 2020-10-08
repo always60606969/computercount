@@ -9,15 +9,14 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <div class="col-sm-9" >
-            <h5 align='center' style="color:red;">Техник Үзүүлэлт</h5>
-              <hr style="border: 2px dotted black;">
-          </div>
-
-          </div>
+               <div class="col-sm-9" >
+                      <h5 align='center' style="color:red;">Техник Үзүүлэлт</h5>
+                      <hr style="border: 2px dotted black;">
+               </div>
+        </div>
           <form  action="{{action("addController@store")}}" method="post">
               @csrf
-
+              <input type="hidden" name="ID" id="ID">
             <div class="row">
             <div class="form-group col-md-3 text-left">
                   <label>Техник хэрэгсэл нэр</label>
@@ -89,12 +88,11 @@
 
         <h5 align='center' style="color:red;">Сүлжээнд холбогдсон техник хэрэгсэл</h5>
         <hr style="border: 2px dotted black;">
-
           <div class="row">
             <div class="form-group col-md-3 text-left">
               <label>Анги, байгууллага</label>
               <input type="text" id="device_unit" name="device_unit" autocomplete="off" class="form-control" />
-        </div>
+            </div>
             <div class="form-group col-md-3 text-left">
                     <label>Хэрэглэгчийн нэр</label>
                     <input type="text" id="device_username" name="device_username" autocomplete="off" class="form-control" />
@@ -107,33 +105,33 @@
                     <label>Mac хаяг</label>
                     <input type="text" id="device_mac" name="device_mac" autocomplete="off" class="form-control" />
               </div>
-        </div>
+          </div>
             <h5 align='center' style="color:red;"> Тоног төхөөрөмжийн зориулалт</h5>
             <hr style="border:  2px dotted black;">
             <div class="form-group col-md-12 text-left">
               <label>Үйлдвэрлэсэн үйлдвэрийн дугаар</label>
               <input type="text" id="device_factory" name="device_factory" autocomplete="off" class="form-control" />
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6 text-left">
-                  <label>Хэрэглэгчийн нэр</label>
-                  <input type="text" id="device_country" name="device_country" autocomplete="off" class="form-control" />
             </div>
-            <div class="form-group col-md-6 text-left">
-                  <label>Ip хаяг</label>
-                  <input type="text" id="device_mdate" name="device_mdate" autocomplete="off" class="form-control" />
-            </div>
+                <div class="row">
+                     <div class="form-group col-md-6 text-left">
+                           <label>Хэрэглэгчийн нэр</label>
+                           <input type="text" id="device_country" name="device_country" autocomplete="off" class="form-control" />
+                    </div>
+                     <div class="form-group col-md-6 text-left">
+                       <label>Хэрэглэгчийн нэр</label>
+                                <input type="text" id="device_mdate" name="device_mdate" autocomplete="off" class="form-control" />
+                     </div>
             <div class="form-group col-md-12 text-Center" name="companyName" autocomplete="off" class="form-control">
-                  <label>Ашиглалтанд оруулсан</label>
-                  <input type="date" id="device_udate" name="device_udate" autocomplete="off" class="form-control" />
-            </div>
-        </div>
-            <div class="modal-footer">
+                    <label>Ашиглалтанд оруулсан</label>
+                    <input type="date" id="device_udate" name="device_udate" autocomplete="off" class="form-control" />
+             </div>
+                </div>
+             <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
             </form>
         </div>
     </div>
-</div>
+  </div>
 </div>
